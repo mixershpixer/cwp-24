@@ -32,13 +32,11 @@ async function main()
             currency = data.curr;
             time = data.time;
 
-            nowInterval = setInterval(async () =>
-            {
+            nowInterval = setInterval(async () =>{
                 socket.emit('btc', (await axios.get('https://blockchain.info/en/ticker')).data[currency])
-            }
-                , time);
+            }, time);
         });
-
+        
         socket.on('getBuy', async (msg) =>
         {
             console.log("selling: "+msg);
